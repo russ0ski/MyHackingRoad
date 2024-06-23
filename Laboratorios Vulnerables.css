@@ -42,11 +42,40 @@ html, body {
     color:aliceblue
 }
 
+.seccion-contenido a {
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Verdana', 'Sans-Serif';    padding: 5px 11px;
+    font-weight: bold;
+}
+
+.seccion-contenido a:hover {
+    color: blue;
+}
+
+.seccion-contenido2 {
+    max-width: 1000px;
+    margin: auto;
+    color:aliceblue
+}
+
+.seccion-contenido2 a:hover {
+    color: red;
+}
+
 p {
     font-size: 100%;
     line-height: 180%;
     margin: 0%;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Verdana', 'Sans-Serif';
+}
+
+.enlace {
+    border-radius: 9px;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Verdana', 'Sans-Serif';
+    border: 3px solid;
+    padding: 7px 13px;
+    font-weight: bold;
 }
 
 .publicidad {
@@ -57,15 +86,6 @@ p {
     display: table;
     margin: 0;
     top: 0;
-}
-
-.enlace {
-    border-radius: 9px;
-    text-decoration: none;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Verdana', 'Sans-Serif';
-    border: 3px solid;
-    padding: 7px 13px;
-    font-weight: bold;
 }
 
 .pie {

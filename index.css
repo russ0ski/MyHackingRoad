@@ -54,6 +54,10 @@ html, body {
     font-weight: bold;
 }
 
+.seccion-contenido nav a:hover {
+    color: red;
+}
+
 p {
     font-size: 100%;
     line-height: 180%;
@@ -63,7 +67,7 @@ p {
 
 .publicidad {
     width: 100%;
-    height: 15%;
+    height: 5%;
     background: url("content/Fondo\ Rojo.jpg") no-repeat 25% 25%;
     background-size: cover;
     display: table;
@@ -85,6 +89,10 @@ p {
     margin: 2px;
     text-align: center;
     color: #fff;
+}
+
+nav a:hover {
+    color: white;
 }
 
 .seccion2 {
@@ -128,6 +136,10 @@ li {
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Verdana', 'Sans-Serif';    padding: 5px 11px;
     font-weight: bold;
+}
+
+.seccion-contenido2 nav a:hover {
+    color: blue;
 }
 
 .pie {
