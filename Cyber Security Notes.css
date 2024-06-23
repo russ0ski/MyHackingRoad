@@ -1,0 +1,111 @@
+html, body {
+    padding: 0;
+    margin: auto;
+    background: url("content/Fondo\ Gris.jpg") repeat 45%;
+    background-size: cover;
+    width: 90%;
+    height: 100%;
+}
+
+.cabecera {
+    text-align: center;
+    background: url("content/Fondo\ Negro.png") no-repeat 30% 30%;
+    background-size: cover;
+    margin: auto;
+    color:aliceblue
+}
+
+.cabecera h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Verdana', 'Sans-Serif';
+    font-size: 200%;
+}
+
+.seccion {
+    width: 100%;
+    height: 35%;
+    background: url("content/Fondo\ Negro.png") no-repeat 0% 0%;
+    background-size: cover;
+    display: table;
+    margin: 0;
+    top: 0;
+}
+
+.seccion-dentro {
+    width: 100%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.seccion-contenido {
+    max-width: 1000px;
+    margin: auto;
+    color:aliceblue
+}
+
+p {
+    font-size: 100%;
+    line-height: 180%;
+    margin: 0%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Verdana', 'Sans-Serif';
+}
+
+.publicidad {
+    width: 100%;
+    height: 5%;
+    background: url("content/Fondo\ Rojo.jpg") no-repeat 25% 25%;
+    background-size: cover;
+    display: table;
+    margin: 0;
+    top: 0;
+}
+
+.publicidad-contenido {
+    background-color: rgb(60, 161, 19);
+    width: 100%;
+    text-align: center;
+}
+
+.publicidad-contenido li {
+    display: inline-block;
+    border: 2px solid #000000;
+    border-color: rgb(0, 0, 0);
+    padding: 8px;
+    margin: 2px;
+    text-align: center;
+    color: #fff;
+}
+
+.pie {
+    width: 100%;
+    height: 55%;
+    background: url("content/Fondo\ Negro.png") no-repeat 50% 50%;
+    background-size: cover;
+    display: table;
+    margin: 0;
+    top: 0;
+}
+
+.pie-dentro {
+    width: 100%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.pie-contenido {
+    text-align: center;
+    max-width: 1200px;
+    margin: auto;
+    color:aliceblue;
+}
+
+.pie-contenido h4 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Verdana', 'Sans-Serif';
+    font-size: 110%;
+}
+
+.pie-contenido a {
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Verdana', 'Sans-Serif';
+    padding: 5px 11px;
+    font-weight: bold;
+}
