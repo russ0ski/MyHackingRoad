@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Machine WriteUps</title>
+    <link rel="stylesheet" href="Machine WriteUps.css">
+    <link rel="icon" href="content/Lambda.ico">
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <br>
+            <h1>Machine WriteUps</h1>
+            <img src="content/Bill Gates.jpg" width="126">
+            <img src="content/Nikola Tesla.jpeg" width="146">
+            <img src="content/Javier Milei.jpg" width="160">
+            <img src="content/Elon Musk.jpg" width="141">
+            <img src="content/Linus Torvalds.jpg" width="141">
+            <br>
+            <br>
+            <br>
+        </div>
+    </header>
+
+    <br>
+
+    <section class="seccion">
+        <div class="seccion-dentro">
+            <div style="text-align:center" class="seccion-contenido">
+                <p>
+                    En esta sección encontrarás todos los WriteUps hechos hasta la fecha por mí, en donde
+                    podrás tener una guía completa que pueda ayudarte a realizar el proceso de Hackeo de una
+                    máquina específica, sin importar su dificultad o duración.
+                </p>
+                <br>
+                <p>
+                    Tengo al rededor de unas 30 máquinas hechas en TryHackMe, además de otras 10 en HackTheBox
+                    y algunas más en Dockerlabs y VulNyx, pero aún tengo que escribir los manuales de los mismos.
+                    Poco a poco iré añadiendo más guías aquí.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="publicidad">
+        <h3 style="text-align:center">We are Legion --- We do not Forgive --- We do not Forget --- Expect Us</h3>
+    </section>
+
+    <section class="seccion">
+        <div class="seccion-dentro">
+            <div class="seccion-contenido">
+                <br>
+                <h2 style="text-align:center">Obsession (Muy Fácil)</h2>
+                <h3 style="text-align:center">Autor:<a href="https://www.linkedin.com/in/russo-levano-jimenez/">Juan Carlos</a></h3>
+                <h3>★ Fase de Enumeración ★</h3>
+                <p>
+                    Desplegamos la máquina y una vez tengamos la dirección IP, procedemos a realizarle un Ping
+                    (enviarle una traza ICMP) para comprobar si tenemos conectividad con ella. Como se puede ver,
+                    tenemos conectividad.
+                </p>
+                <br>
+                <img src="content/Obssesion/1.png" width="450">
+                <br>
+                <img src="content/Obssesion/2.png" width="550">
+                <br>
+                <br>
+                <p>
+                    Ahora, realizaremos un reconocimiento con <strong>Nmap</strong>, en donde, al tratarse de una máquina sencilla,
+                    nos será suficiente con los siguientes parámetros para poder analizarla en profundidad:
+                </p>
+                <br>
+                <p><strong>-sV:</strong> Nos muestra la versión de los servicios que corren tras la máquina.</p>
+                <p><strong>-sC:</strong> Ejecuta los Scripts básicos de reconocimiento de la herramienta Nmap.</p>
+                <p><strong>-oN:</strong> Guarda el resultado generado en un fichero para su posterior análisis.</p>
+                <br>
+                <img src="content/Obssesion/3.png" width="650">
+                <br>
+                <br>
+                <p>
+                    Como se puede observar, están abiertos los puertos 21 (FTP), 22 (SSH) y 80 (HTTP). El servicio
+                    FTP tiene el Anonymous Login habilitado, por tanto comenzaremos explorando por allí y luego nos
+                    moveremos al resto de puertos.
+                </p>
+                <br>
+                <img src="content/Obssesion/4.png" width="550">
+                <br>
+                <br>
+                <p>
+                    Tras listar los archivos disponibles en el servicio, vemos 2 ficheros .txt dentro, procedemos
+                    a descargarlos con "<strong>mget</strong>" en nuestra máquina atacante para visualizar su contenido.
+                </p>
+                <br>
+                <img src="content/Obssesion/5.png" width="550">
+                <br>
+                <br>
+                <p>
+                    Del primer archivo se puede observar que hay 3 posibles usuarios: Russoski, Gonza y Nágore.
+                    Del segundo archivo se puede interpretar que la víctima tiene una configuración poco segura
+                    en su equipo.
+                </p>
+                <br>
+                <img src="content/Obssesion/6.png" width="950">
+                <br>
+                <br>
+                <p>
+                    Procedemos a explorar el servicio Web del puerto 80 a ver si allí encontramos más pistas.
+                    Lo primero que nos encontramos es una página que parece ser un servicio de asesorías de
+                    entrenamientos online o algo por el estilo.
+                </p>
+                <br>
+                <img src="content/Obssesion/7.png" width="850">
+                <br>
+                <br>
+                <p>
+                    Indagando por la página, vemos que de entre las cosas más interesantes pueden ser este
+                    correo electrónica para contactar a la víctima, la cual de momento no utilizaremos.
+                </p>
+                <br>
+                <img src="content/Obssesion/8.png" width="300">
+                <br>
+                <br>
+                <p>
+                    Y este formulario, el cual probamos a rellenar y enviar pinchando en "CAMBIAR MI VIDA A
+                    MEJOR AHORA" a ver donde nos lleva.
+                </p>
+                <br>
+                <img src="content/Obssesion/9.png" width="400">
+                <br>
+                <br>
+                <p>
+                    Por lo visto es funcional y hemos enviado nuestros datos. Pero no obtenemos mucha información
+                    de retorno, aunque se puede observar que el nombre Russoski empieza a repetirse más de una vez
+                    a lo largo de la página. Lo tendremos en cuenta.
+                </p>
+                <br>
+                <img src="content/Obssesion/10.png" width="450">
+                <br>
+                <br>
+                <p>
+                    Y viendo el código fuente de la página con "<strong>ctrl + u</strong>" encontramos que hay un
+                    comentario indicando que la víctima utiliza el mismo usuario para todos sus servicios.
+                </p>
+                <br>
+                <img src="content/Obssesion/11.png" width="700">
+                <br>
+                <br>
+                <p>
+                    Procederemos a realizar una enumeración de directorios con <strong>Gobuster</strong> para ver si existen
+                    rutas ocultas a las que podamos acceder en busca de más información. Vemos que encontramos 2 rutas con
+                    nombres interesantes: /backup e /important.
+                </p>
+                <br>
+                <img src="content/Obssesion/12.png" width="700">
+                <br>
+                <br>
+                <p>
+                    Tras entrar en ambas, concluimos que la que nos servirá es /backup, ya que en ella daremos con
+                    un archivo llamado backup.txt, el cual si entramos en él, encontraremos al fin el nombre de
+                    usuario que parece ser de la víctima.
+                </p>
+                <br>
+                <img src="content/Obssesion/14.png" width="450">
+                <br>
+                <img src="content/Obssesion/15.png" width="500">
+                <br>
+                <br>
+                <h3>★ Fase de Explotación ★</h3>
+                <p>
+                    Procederemos a realizar un ataque de fuerza bruta con <strong>Hydra</strong>, ya que tenemos un
+                    usuario para probar. Lo intentaremos contra el servicio SSH del puerto 22 y utilizaremos como diccionario
+                    el infalible rockyou.txt. Tras un rato de espera encontramos al fin la contraseña (iloveme).
+                </p>
+                <br>
+                <img src="content/Obssesion/16.png" width="700">
+                <br>
+                <br>
+                <p>
+                    Ya con un nombre de usuario y contraseña disponibles, probaremos a entrar por SSH de manera
+                    remota a la máquina víctima. Como vemos, tenemos éxito y estamos dentro, concretamente llegamos
+                    a la carpeta /home del usuario "russoski".
+                </p>
+                <br>
+                <img src="content/Obssesion/17.png" width="650">
+                <br>
+                <br>
+                <h3>★ Fase de Escalada de Privilegios ★</h3>
+                <h3>Método 1</h3>
+                <p>
+                    Una vez dentro, si ejecutamos el comando "<strong>sudo -l</strong>" podremos ver que el usuario
+                    "russoski" puede ejecutar con permisos elevados y sin necesidad de contraseña la herramienta Vim.
+                </p>
+                <br>
+                <img src="content/Obssesion/18.png" width="550">
+                <br>
+                <br>
+                <p>
+                    Realizando una rápida búsqueda en GTFOBins encontramos que la herramienta Vim es vulnerable
+                    si está configurada para ser ejecutada desde Sudo. El comando para escalar privilegios sería
+                    el siguiente:
+                </p>
+                <br>
+                <img src="content/Obssesion/19.png" width="120">
+                <img src="content/Obssesion/20.png" width="250">
+                <br>
+                <br>
+                <p>
+                    Procedemos a ejecutar el comando recomendado por GTFOBins y vemos que ya somos root.
+                </p>
+                <br>
+                <img src="content/Obssesion/21.png" width="400">
+                <br>
+                <br>
+                <h3>Método 2</h3>
+                <p>
+                    Para esta ocasión, probaremos ejecutando el comando "<strong>find / -perm -4000 2>/dev/null</strong>",
+                    el cual lo que hace es buscar todos aquellos binarios SUID que se encuentren instalados en el
+                    equipo. Vemos los siguientes resultados y observamos que se encuentra instalado el binario Env,
+                    el cual suele ser vulnerable si no se configura correctamente.
+                </p>
+                <br>
+                <img src="content/Obssesion/22.png" width="450">
+                <br>
+                <br>
+                <p>
+                    Realizando una rápida búsqueda en GTFOBins encontramos que la herramienta Env es vulnerable
+                    y puede ser abusada. El comando para escalar privilegios sería el siguiente:
+                </p>
+                <br>
+                <img src="content/Obssesion/23.png" width="140">
+                <img src="content/Obssesion/24.png" width="250">
+                <br>
+                <br>
+                <p>
+                    Procedemos a ejecutar el comando recomendado pero especificando la ruta absoluta del binario
+                    y no la relativa. Funciona.
+                </p>
+                <br>
+                <img src="content/Obssesion/25.png" width="450">
+                <br>
+                <br>
+                <h3>Método 3</h3>
+                <p>
+                    Por último, si realizamos una intensa búsqueda por los directorios y rutas del equipo, acabaremos
+                    dando con un archivo oculto. Éste se encuentra digiriéndose a la ruta donde se aloja el servicio
+                    Web del puerto 80 (/var/www/html). Si entramos en el directorio Important y listamos los archivos
+                    ocultos con "<strong>ls -a</strong>", encontraremos el archivo .root-passwd.txt.
+                </p>
+                <br>
+                <p>
+                    Si visualizamos su contenido encontraremos la contraseña de root, pero está hasheada.
+                </p>
+                <br>
+                <img src="content/Obssesion/26.png" width="900">
+                <br>
+                <br>
+                <p>
+                    Ya que no sabemos en qué formato está hasheada la contraseña, lo mejor será digirirnos a
+                    <a href="https://crackstation.net/" target="_blank">CrackStation</a> para averiguarlo e
+                    intentar crackearla. Lo conseguimos y vemos que el formato era MD5 y la contraseña original
+                    es "fucker".
+                </p>
+                <br>
+                <img src="content/Obssesion/27.png" width="750">
+                <br>
+                <br>
+                <p>
+                    Procedemos a utilizar la contraseña que hemos encontrado, ejecutando el comando
+                    "<strong>sudo su</strong>" para cambiar de usuario. Proporcionamos la credencial y vemos
+                    que funciona, ya somos root otra vez.
+                </p>
+                <br>
+                <img src="content/Obssesion/28.png" width="450">
+                <br>
+                <br>
+                <h3>★ Fase de Post-Explotación ★</h3>
+                <p>
+                    Una vez comprometida la máquina al 100%, sólo nos queda proceder a buscar qué archivos o
+                    qué contenido son de nuestro interés. Dirigiéndonos a la carpeta del usuario root encontramos
+                    un archivo llamado Video-Nagore-Fernandez.txt, el cual contiene el enlace a un vídeo de YouTube.
+                </p>
+                <br>
+                <p>
+                    Si entramos en dicho <a href="https://www.youtube.com/shorts/_v8GzGReTAk" target="_blank">enlace</a>,
+                    veremos que efectivamente, hemos encontrado lo que estábamos buscando.
+                </p>
+                <br>
+                <img src="content/Obssesion/29.png" width="450">
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </section>
+
+    <section class="publicidad">
+        <h3 style="text-align:center">We are Legion --- We do not Forgive --- We do not Forget --- Expect Us</h3>
+    </section>
+
+    <br>
+
+    <footer>
+        <section class="pie">
+            <div class="pie-dentro">
+                <div class="pie-contenido">
+                    <br>
+                    <br>
+                    <a href="https://www.linkedin.com/in/russo-levano-jimenez/" target="_blank">
+                        <img src="content/LinkedIn.jpg" width="27">
+                    </a>
+                    <a href="https://github.com/russ0ski" target="_blank">
+                        <img src="content/GitHub.jpg" width="30">
+                    </a>
+                    <a href="https://www.youtube.com/@russo.trickz/" target="_blank">
+                        <img src="content/YouTube.jpg" width="30">
+                    <a href="https://www.instagram.com/russo.trickz/" target="_blank">
+                        <img src="content/Instagram.jpg" width="30">
+                    </a>
+                    <h4>© 2024 The Hacker Way</h4>
+                    <br>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+
+</html>
