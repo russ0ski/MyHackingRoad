@@ -48,19 +48,19 @@
         <nav class="publicidad-contenido">
             <ul>
                 <li>
-                    <a href="CSN - Blue Team.html">BLUE TEAM</a>
+                    <a href="blueteam.html">BLUE TEAM</a>
                 </li>
                 <li>
-                    <a href="CSN - Red Team.html">RED TEAM</a>
+                    <a href="redteam.html">RED TEAM</a>
                 </li>
                 <li>
-                    <a href="CSN - Redes.html">REDES</a>
+                    <a href="networking.html">REDES</a>
                 </li>
                 <li>
-                    <a href="CSN - Linux.html">LINUX</a>
+                    <a href="linux.html">LINUX</a>
                 </li>
                 <li>
-                    <a href="CSN - Windows.html">WINDOWS</a>
+                    <a href="windows.html">WINDOWS</a>
                 </li>
             </ul>
         </nav>
@@ -71,6 +71,98 @@
             <h1>RED TEAM</h1>
         </div>
     </header>
+
+    <section class="seccion">
+        <div class="seccion-dentro">
+            <div class="seccion-contenido">
+                <br>
+                <h2>★ Nmap (Network Mapper) ★</h2>
+                <br>
+                <h3>ESCANEO DE LA RED</h3>
+                <br>
+                <h4>Realizar un escaneo básico de una dirección IP:</h4>
+                <p>
+                    nmap -sV -sC "dirección IP" -oN "fichero.txt"
+                </p>
+                <br>
+                <h4>Realizar un escaneo completo de una dirección IP:</h4>
+                <p>
+                    nmap -p- -sS -sV -sC -n -v -Pn "dirección IP" -oN "fichero.txt"
+                </p>
+                <br>
+                <h4>Realizar un escaneo de puertos que funcionen por el protocolo UDP:</h4>
+                <p>
+                    nmap -sU "dirección IP" -oN "fichero.txt"
+                </p>
+                <br>
+                <h3>PARÁMETROS MÁS ÚTILES</h3>
+                <br>
+                <p>
+                    <strong>-p-:</strong> Escaneo de todos los puertos posibles.
+                </p>
+                <br>
+                <p>
+                    <strong>-sS:</strong> Syn port scan.
+                </p>
+                <br>
+                <p>
+                    <strong>-sV:</strong> Mostrar la versión de los servicios que corren tras los puertos abiertos.
+                </p>
+                <br>
+                <p>
+                    <strong>-sC:</strong> Ejecutar los Scripts básicos de reconocimiento durante el escaneo.
+                </p>
+                <br>
+                <p>
+                    <strong>-sU:</strong> Escaneo de puertos que funcionen por el protocolo UDP.
+                </p>
+                <br>
+                <p>
+                    <strong>-n:</strong> No realizar la resolución DNS durante el escaneo.
+                </p>
+                <br>
+                <p>
+                    <strong>-v:</strong> Mostrar mayor información del proceso mientras se ejecuta el escaneo.
+                </p>
+                <br>
+                <p>
+                    <strong>-Pn:</strong> No realizar un Ping a cada puerto durante el escaneo.
+                </p>
+                <br>
+                <p>
+                    <strong>--min-rate 2000:</strong> Establecer un ratio mínimo de 2000 paquetes por segundo.
+                </p>
+                <br>
+                <p>
+                    <strong>--top-ports 200:</strong> Escanear sólo los 200 puertos más comunes.
+                </p>
+                <br>
+                <p>
+                    <strong>-oN:</strong> Guardar el reporte resultante en un fichero para posterior análisis.
+                </p>
+                <br>
+                <h3>ANÁLISIS DE VULNERABILIDADES</h3>
+                <br>
+                <p>
+                    nmap --script vuln -p"puerto" "dirección IP"
+                </p>
+                <br>
+                <h3>ENUMERACIÓN DE DIRECTORIOS</h3>
+                <br>
+                <p>
+                    nmap --script http-enum -p"puerto" "dirección IP"
+                </p>
+                <br>
+                <h3>ENUMERACIÓN DE CARPETAS COMPARTIDAS</h3>
+                <br>
+                <p>
+                    nmap -p445 --script=smb-enum-shares.nse,smb-enum-users.nse "dirección IP"
+                </p>
+                <br>
+                <br>
+            </div>
+        </div>
+    </section>
 
     <section class="publicidad">
         <h3 style="text-align:center">We are Legion --- We do not Forgive --- We do not Forget --- Expect Us</h3>
